@@ -52,6 +52,7 @@ mediatek_setup_interfaces()
 	cmcc,a10-ubootmod|\
 	confiabits,mt7981|\
 	cudy,wr3000-v1|\
+	honor,fur-602|\
 	jcg,q30-pro|\
 	keenetic,kn3811|\
 	netis,nx32u|\

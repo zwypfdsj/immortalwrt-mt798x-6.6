@@ -760,6 +760,7 @@ setup_model()
 	*rax3000m* |\
 	sl,3000-emmc|\
 	h3c,nx30pro |\
+	*honor,fur-602* |\
 	konka,komi-a31 |\
 	*nokia,ea0326gmp* |\
 	nradio,wt9103 |\
