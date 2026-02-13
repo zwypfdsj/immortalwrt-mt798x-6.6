@@ -10,7 +10,6 @@
 	compatible = "honor,fur-602", "mediatek,mt7981";
 
 	aliases {
-		label-mac-device = &gmac0;
 		led-boot = &led_status_red;
 		led-failsafe = &led_status_red;
 		led-running = &led_status_green;
@@ -69,7 +68,7 @@
 		reg = <0>;
 		phy-mode = "2500base-x";
 
-		nvmem-cells = <&macaddr_factory_24 0>;
+		nvmem-cells = <&macaddr_factory_2a 0>;
 		nvmem-cell-names = "mac-address";
 
 		fixed-link {
@@ -144,6 +143,12 @@
 						reg = <0x0 0x1000>;
 					};
 
+					macaddr_factory_4: macaddr@4 {
+						compatible = "mac-base";
+						reg = <0x4 0x6>;
+						#nvmem-cell-cells = <1>;
+					};
+
 					macaddr_factory_24: macaddr@24 {
 						compatible = "mac-base";
 						reg = <0x24 0x6>;
@@ -185,7 +190,7 @@
 			reg = <0>;
 			label = "wan";
 
-			nvmem-cells = <&macaddr_factory_2a 0>;
+			nvmem-cells = <&macaddr_factory_24 0>;
 			nvmem-cell-names = "mac-address";
 		};
 
@@ -248,7 +253,21 @@
 };
 
 &wifi {
+	#address-cells = <1>;
+	#size-cells = <0>;
 	nvmem-cells = <&eeprom_factory_0>;
 	nvmem-cell-names = "eeprom";
 	status = "okay";
+
+	band@0 {
+		reg = <0>;
+		nvmem-cells = <&macaddr_factory_4 0>;
+		nvmem-cell-names = "mac-address";
+	};
+
+	band@1 {
+		reg = <1>;
+		nvmem-cells = <&macaddr_factory_4 1>;
+		nvmem-cell-names = "mac-address";
+	};
 };
